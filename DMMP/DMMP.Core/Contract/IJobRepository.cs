@@ -11,13 +11,11 @@ namespace DMMP.Core.Contract
     public interface IJobRepository
     {
         Task<int> GetCountAsync();
-
-        Task Insert(Job newJob);
+        void Insert(Job newJob);
         Task<List<Job>> GetAllJobs();
-        Task<Job> GetJobById(int id);
+        Task<Job> GetById(int id);
         void Update(Job newJob);
         void Delete(Job jobDelete);
         Task DeleteById(int id);
-
     }
 }

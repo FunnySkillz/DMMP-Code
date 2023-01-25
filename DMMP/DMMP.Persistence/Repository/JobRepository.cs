@@ -34,20 +34,19 @@ namespace DMMP.Persistence.Repository
             return await _dbContext.Jobs.OrderBy(j => j.Id).ToListAsync();
         }
 
-        public async Task<Job> GetJobById(int id)
+        public async Task<Job> GetById(int id)
         {
             return await _dbContext.Jobs.SingleOrDefaultAsync(j => j.Id == id);
         }
-
 
         public async Task<int> GetCountAsync()
         {
             return await _dbContext.Jobs.CountAsync();
         }
 
-        public async Task Insert(Job newJob)
+        public void Insert(Job newJob)
         {
-            await _dbContext.Jobs.AddAsync(newJob);
+            _dbContext.Jobs.Add(newJob);
         }
 
         public void Update(Job newJob)

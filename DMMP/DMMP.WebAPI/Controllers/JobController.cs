@@ -53,7 +53,7 @@ namespace DMMP.WebAPI.Controllers
 
             try
             {
-                await _unitOfWork.JobRepository.Insert(job);
+                _unitOfWork.JobRepository.Insert(job);
                 await _unitOfWork.SaveChangesAsync();
 
                 return CreatedAtAction(("Get"), new { id = job.Id }, job);
@@ -69,7 +69,7 @@ namespace DMMP.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Job>> Get(int id)
         {
-            var job = await _unitOfWork.JobRepository.GetJobById(id);
+            var job = await _unitOfWork.JobRepository.GetById(id);
 
             if (job == null)
             {
@@ -113,7 +113,7 @@ namespace DMMP.WebAPI.Controllers
         {
             try
             {
-                var job = await _unitOfWork.JobRepository.GetJobById(id);
+                var job = await _unitOfWork.JobRepository.GetById(id);
 
                 if (job == null)
                 {
