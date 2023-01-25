@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoreLibrary.Contract
+namespace DMMP.Core.Contract
 {
     public interface IJobRepository
     {
