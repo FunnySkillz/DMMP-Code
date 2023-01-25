@@ -25,7 +25,6 @@ namespace DMMP.Persistence.Repository
 
         public async Task DeleteById(int id)
         {
-
             var toDelete = await _dbContext.Jobs.SingleOrDefaultAsync(j => j.Id == id);
             Delete(toDelete);
         }
@@ -35,7 +34,7 @@ namespace DMMP.Persistence.Repository
             return await _dbContext.Jobs.OrderBy(j => j.Id).ToListAsync();
         }
 
-        public async Task<Job?> GetJobById(int id)
+        public async Task<Job> GetJobById(int id)
         {
             return await _dbContext.Jobs.SingleOrDefaultAsync(j => j.Id == id);
         }

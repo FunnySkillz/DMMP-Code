@@ -14,7 +14,7 @@ namespace DMMP.Core.Contract
 
         Task Insert(Job newJob);
         Task<List<Job>> GetAllJobs();
-        Task<Job?> GetJobById(int id);
+        Task<Job> GetJobById(int id);
         void Update(Job newJob);
         void Delete(Job jobDelete);
         Task DeleteById(int id);
