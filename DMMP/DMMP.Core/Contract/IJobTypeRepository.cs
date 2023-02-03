@@ -11,7 +11,7 @@ namespace DMMP.Core.Contract
     public interface IJobTypeRepository
     {
         Task<int> GetCountAsync();
-        Task Insert(JobType newJobType);
+        void Insert(JobType newJobType);
         Task<List<JobType>> GetAllJobTypes();
         Task<JobType?> GetJobTypeById(int id);
         void Update(JobType newImoObject);

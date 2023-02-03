@@ -38,10 +38,9 @@ namespace DMMP.Persistence.Repository
             return await _dbContext.JobTypes.CountAsync();
         }
 
-        public async Task Insert(JobType newJobType)
+        public void Insert(JobType newJobType)
         {
-            await _dbContext.JobTypes.AddAsync(newJobType);
-            await _dbContext.SaveChangesAsync();
+            _dbContext.JobTypes.AddAsync(newJobType);
         }
 
         public void Update(JobType newImoObject)

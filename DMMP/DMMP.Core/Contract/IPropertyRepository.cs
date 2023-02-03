@@ -11,8 +11,7 @@ namespace DMMP.Core.Contract
     public interface IPropertyRepository
     {
         Task<int> GetCountAsync();
-
-        Task Insert(Property newProperty);
+        void Insert(Property newProperty);
         Task<List<Property>> GetAllProperties();
         void Update(Property newProperty);
         void Delete(Property deleteProp);

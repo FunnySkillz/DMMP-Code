@@ -39,15 +39,14 @@ namespace DMMP.Persistence.Repository
             return await _dbContext.Properties.SingleOrDefaultAsync(p => p.Id == id);
         }
 
-
         public async Task<int> GetCountAsync()
         {
             return await _dbContext.Properties.CountAsync();
         }
 
-        public async Task Insert(Property newProperty)
+        public void Insert(Property newProperty)
         {
-            await _dbContext.Properties.AddAsync(newProperty);
+            _dbContext.Properties.AddAsync(newProperty);
         }
 
         public void Update(Property newProperty)
