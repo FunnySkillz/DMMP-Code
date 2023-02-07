@@ -11,6 +11,7 @@ namespace DMMP.Core.Entity
 {
     public class JobType : EntityObject
     {
+        [MaxLength(100)]
         public string? JobName { get; set; }
         public DateTime DateCreated { get; set; }
     }
