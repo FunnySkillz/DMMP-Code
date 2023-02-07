@@ -51,7 +51,10 @@
 	<ItemGroup>
 	  <Folder Include="ViewModel\" />
 	  <Folder Include="View\" />
-	  <Folder Include="Services\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 	</ItemGroup>
 
 </Project>
