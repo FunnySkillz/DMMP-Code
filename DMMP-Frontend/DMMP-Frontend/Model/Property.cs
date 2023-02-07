@@ -8,6 +8,7 @@ namespace DMMP_Frontend.Model
 {
     class Property
     {
+        public int PropertyId { get; set; }
         public string PropertyName { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
         public int AddressNumber { get; set; }

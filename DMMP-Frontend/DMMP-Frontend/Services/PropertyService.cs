@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DMMP_Frontend.Services
 {
-    class PropertyService
+    public class PropertyService
     {
         private readonly HttpClient _httpClient;
 
