@@ -1,4 +1,5 @@
 ﻿using DMMP_Frontend.Services;
+using DMMP_Frontend.View;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
@@ -9,123 +10,30 @@ using System.Windows.Input;
 
 namespace DMMP_Frontend.ViewModel
 {
-    public class PropertyViewModel : INotifyPropertyChanged
+    public partial class PropertyViewModel : BaseViewModel
     {
-        private readonly PropertyService _propertyService;
-        private Property _property;
-        private bool _isBusy;
-        private string _errorMessage;
+        public ObservableCollection<Property> Properties { get; } = new();
+        PropertyService propertyService;
+        IConnectivity connectivity;
+        //IGeolocation geolocation;
 
-        public PropertyViewModel(PropertyService propertyService)
+        public PropertyViewModel(PropertyService propertyService, IConnectivity connectivity   )
         {
-            _propertyService = propertyService;
-            SaveCommand = new AsyncCommand(SaveAsync);
+            Title = "Property View";
+            this.connectivity = connectivity;
+            this.propertyService = propertyService;
         }
 
-        public int Id { get { return _property.PropertyId; } }
-
-        public string Name
+        [RelayCommand]
+        async Task GoToDetails(Property property)
         {
-            get { return _property.PropertyName; }
-            set
-            {
-                if (_property.PropertyName != value)
-                {
-                    _property.PropertyName = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+            if (property == null)
+                return;
 
-        public string City
+            await Shell.Current.GoToAsync(nameof(DetailPage), true, new Dictionary<string, object>
         {
-            get { return _property.City; }
-            set
-            {
-                if (_property.City != value)
-                {
-                    _property.City = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-        public int PostalCode
-        {
-            get { return _property.PostalCode; }
-            set
-            {
-                if (_property.PostalCode != value)
-                {
-                    _property.PostalCode = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-
-        public bool IsBusy
-        {
-            get { return _isBusy; }
-            set
-            {
-                if (_isBusy != value)
-                {
-                    _isBusy = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public string ErrorMessage
-        {
-            get { return _errorMessage; }
-            set
-            {
-                if (_errorMessage != value)
-                {
-                    _errorMessage = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-
-        public ICommand SaveCommand { get; }
-
-        private async Task SaveAsync()
-        {
-            try
-            {
-                IsBusy = true;
-                ErrorMessage = string.Empty;
-
-                // Validate the data
-                if (string.IsNullOrEmpty(Name))
-                {
-                    ErrorMessage = "Name is required.";
-                }
-
-                // Save the property
-                //await _propertyService.SaveAsync(_property);
-
-                // Update the UI
-                OnPropertyChanged(nameof(Id));
-            }
-            catch (Exception ex)
-            {
-                ErrorMessage = ex.Message;
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            {"Property", property }
+        });
         }
     }
 }
