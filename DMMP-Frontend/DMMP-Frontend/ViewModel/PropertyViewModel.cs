@@ -106,7 +106,7 @@ namespace DMMP_Frontend.ViewModel
                 }
 
                 // Save the property
-                await _propertyService.SaveAsync(_property);
+                //await _propertyService.SaveAsync(_property);
 
                 // Update the UI
                 OnPropertyChanged(nameof(Id));
