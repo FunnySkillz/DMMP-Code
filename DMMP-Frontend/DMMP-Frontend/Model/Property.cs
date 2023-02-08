@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DMMP_Frontend.Model
 {
-    class Property
+    public class Property
     {
         public int PropertyId { get; set; }
         public string PropertyName { get; set; } = string.Empty;
