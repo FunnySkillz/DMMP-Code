@@ -49,6 +49,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\account.png" />
+	  <None Remove="Resources\Images\add.png" />
+	  <None Remove="Resources\Images\arrow_downward.png" />
+	  <None Remove="Resources\Images\arrow_upward.png" />
+	  <None Remove="Resources\Images\attach_money.png" />
+	  <None Remove="Resources\Images\cemahseri.jpg" />
+	  <None Remove="Resources\Images\credit_card.png" />
+	  <None Remove="Resources\Images\home.png" />
+	  <None Remove="Resources\Images\more.png" />
+	  <None Remove="Resources\Images\notifications.png" />
+	  <None Remove="Resources\Images\payments.png" />
+	  <None Remove="Resources\Images\sort.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 	  <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
