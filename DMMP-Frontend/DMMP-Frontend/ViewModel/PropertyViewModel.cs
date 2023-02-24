@@ -17,7 +17,7 @@ namespace DMMP_Frontend.ViewModel
         IConnectivity connectivity;
         //IGeolocation geolocation;
 
-        public PropertyViewModel(PropertyService propertyService, IConnectivity connectivity   )
+        public PropertyViewModel(PropertyService propertyService, IConnectivity connectivity)
         {
             Title = "Property View";
             this.connectivity = connectivity;
@@ -34,6 +34,47 @@ namespace DMMP_Frontend.ViewModel
         {
             {"Property", property }
         });
+        }
+
+        [ObservableProperty]
+        bool isRefreshing;
+
+        [RelayCommand]
+        async Task GetPropertiesAsync()
+        {
+            if (IsBusy)
+                return;
+
+            try
+            {
+                if (connectivity.NetworkAccess != NetworkAccess.Internet)
+                {
+                    await Shell.Current.DisplayAlert("No connectivity!",
+                        $"Please check internet and try again.", "OK");
+                    return;
+                }
+
+                IsBusy = true;
+                var properties = await propertyService.GetPropertiesAsync();
+
+                if (Properties.Count != 0)
+                    Properties.Clear();
+
+                foreach (var monkey in properties)
+                    Properties.Add(monkey);
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unable to get properties: {ex.Message}");
+                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+                IsRefreshing = false;
+            }
+
         }
     }
 }
