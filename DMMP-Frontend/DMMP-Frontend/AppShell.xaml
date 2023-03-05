@@ -9,22 +9,15 @@
 
     <TabBar x:Name="MyTabBar">
         <Tab Title="Home" Icon="home.png">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage">
-                
-            </ShellContent>
-
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"></ShellContent>
         </Tab>
 
         <Tab Title="Add" Icon="add.png">
-            <ShellContent ContentTemplate="{DataTemplate local:AddPropertyPage}" Route="AddPage">
-                
-            </ShellContent>
+            <ShellContent ContentTemplate="{DataTemplate local:AddPropertyPage}" Route="AddPage"></ShellContent>
         </Tab>
         
-        <Tab Title="DetailPage" Icon="more.png">
-            <ShellContent ContentTemplate="{DataTemplate local:DetailPage}" Route="DetailPage">
-                
-            </ShellContent>
+        <Tab Title="User" Icon="account.png">
+            <ShellContent ContentTemplate="{DataTemplate local:UserDetailPage}" Route="UserPage"></ShellContent>
         </Tab>
 
     </TabBar>
