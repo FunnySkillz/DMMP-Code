@@ -1,4 +1,4 @@
-﻿namespace DMMP_Frontend;
+﻿namespace DMMP_Frontend.View;
 
 public partial class MainPage : ContentPage
 {

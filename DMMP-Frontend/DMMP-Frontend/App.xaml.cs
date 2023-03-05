@@ -1,4 +1,6 @@
-﻿namespace DMMP_Frontend;
+﻿using DMMP_Frontend.View;
+
+namespace DMMP_Frontend;
 
 public partial class App : Application
 {
@@ -7,6 +9,5 @@ public partial class App : Application
 		InitializeComponent();
 
 		MainPage = new AppShell();
-		
 	}
 }
