@@ -1,8 +1,8 @@
 namespace DMMP_Frontend.View;
 
-public partial class NewPage1 : ContentPage
+public partial class UserDetailPage : ContentPage
 {
-	public NewPage1()
+	public UserDetailPage()
 	{
 		InitializeComponent();
 	}

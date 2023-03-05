@@ -58,6 +58,7 @@
 	  <None Remove="Resources\Images\credit_card.png" />
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\more.png" />
+	  <None Remove="Resources\Images\nfc.png" />
 	  <None Remove="Resources\Images\notifications.png" />
 	  <None Remove="Resources\Images\payments.png" />
 	  <None Remove="Resources\Images\sort.png" />

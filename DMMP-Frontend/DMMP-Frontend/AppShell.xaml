@@ -16,10 +16,13 @@
             <ShellContent ContentTemplate="{DataTemplate local:AddPropertyPage}" Route="AddPage"></ShellContent>
         </Tab>
         
+        <Tab Title="NFC" Icon="nfc.png">
+            <ShellContent ContentTemplate="{DataTemplate local:NFCPage}" Route="NFCPage"></ShellContent>
+        </Tab>
+
         <Tab Title="User" Icon="account.png">
             <ShellContent ContentTemplate="{DataTemplate local:UserDetailPage}" Route="UserPage"></ShellContent>
         </Tab>
-
     </TabBar>
     
     
