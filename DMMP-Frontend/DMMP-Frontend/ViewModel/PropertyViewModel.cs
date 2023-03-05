@@ -31,9 +31,9 @@ namespace DMMP_Frontend.ViewModel
                 return;
 
             await Shell.Current.GoToAsync(nameof(DetailPage), true, new Dictionary<string, object>
-        {
-            {"Property", property }
-        });
+            {
+                {"Property", property }
+            });
         }
 
         [ObservableProperty]
@@ -76,5 +76,6 @@ namespace DMMP_Frontend.ViewModel
             }
 
         }
+
     }
 }
