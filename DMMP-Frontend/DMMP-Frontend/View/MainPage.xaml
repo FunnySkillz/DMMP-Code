@@ -5,25 +5,102 @@
              xmlns:local="clr-namespace:DMMP_Frontend"
              xmlns:views="clr-namespace:DMMP_Frontend.View"
              x:Class="DMMP_Frontend.View.MainPage">
-    <ScrollView>
-        <VerticalStackLayout 
-            Spacing="25" 
-            Padding="30,0" 
-            VerticalOptions="Center">
+    <!-- First row is for the page content. Second row is for the bottom navigation bar. -->
+    <!-- * takes leftover space. We could set navigation bar's size to Auto, but since it's fixed size, and Microsoft suggests using Auto as few as possible, setting it to a fixed size is better. -->
+    <!-- For more info, check Caution at https://docs.microsoft.com/en-us/dotnet/maui/user-interface/layouts/grid#rows-and-columns -->
+    <Grid RowDefinitions="*,75"
+          IgnoreSafeArea="True">
+        <!-- Page content. -->
+        <ScrollView HorizontalScrollBarVisibility="Never">
+            <Grid RowDefinitions="400,*,*"
+                  RowSpacing="15"
+                  Padding="30,25,30,15">
+                <!-- General information. -->
+                <Border StrokeThickness="0" StrokeShape="RoundRectangle 25">
+                    <Border.Shadow>
+                        <Shadow Radius="60" Opacity="0.2" />
+                    </Border.Shadow>
+                    <Grid RowDefinitions="55,100,45,25,100,50"
+                          VerticalOptions="Center">
+                        <Image Source="sort" HeightRequest="24" HorizontalOptions="Start" Margin="15,0,0,0" />
+                        <Image Source="more" HeightRequest="24" HorizontalOptions="End" Margin="0,0,15,0" />
 
-            <Label 
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+                        <Border Grid.Row="1"
+                                StrokeThickness="0" StrokeShape="RoundRectangle 50"
+                                HorizontalOptions="Center">
+                            <Image Source="{Binding ProfilePhotoSource}" WidthRequest="100" HeightRequest="100" Aspect="AspectFill" />
+                        </Border>
+                        <Label Grid.Row="2" Text="{Binding ProfileName}" FontSize="22" FontAttributes="Bold" LineBreakMode="NoWrap" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center" Padding="0,15,0,0" />
+                        <Label Grid.Row="3" Text="{Binding ProfileDetails}" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Padding="0,5,0,0" />
 
-            <Label 
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+                        <Grid Grid.Row="4"
+                              RowDefinitions="20,*" ColumnDefinitions="Auto,*,Auto,*,Auto"
+                              RowSpacing="10"
+                              Padding="50,45,50,0">
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Income, StringFormat='${0}'}" FontAttributes="Bold" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="1" Grid.Column="0" Text="Income" FontSize="13" HorizontalTextAlignment="Center" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+                            <Rectangle Grid.RowSpan="2" Grid.Column="1"
+                                VerticalOptions="Fill"
+                                WidthRequest="1"
+                                StrokeThickness="0"
+                                Fill="Gray" />
+
+                            <Label Grid.Row="0" Grid.Column="2" Text="{Binding Expenses, StringFormat='${0}'}" FontAttributes="Bold" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="1" Grid.Column="2" Text="Expenses" FontSize="13" HorizontalTextAlignment="Center" />
+
+                            <Rectangle Grid.RowSpan="2" Grid.Column="3"
+                                       VerticalOptions="Fill"
+                                       WidthRequest="1"
+                                       StrokeThickness="0"
+                                       Fill="Gray" />
+
+                            <Label Grid.Row="0" Grid.Column="4" Text="{Binding Loan, StringFormat='${0}'}" FontAttributes="Bold" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="1" Grid.Column="4" Text="Loan" FontSize="13" HorizontalTextAlignment="Center" />
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <!-- Overview text, notifications bell, and date. -->
+                <Grid Grid.Row="1"
+                      RowDefinitions="*" ColumnDefinitions="Auto,*,*">
+                    <Label Grid.Column="0" Text="Overview" FontAttributes="Bold" FontSize="22" TextColor="{StaticResource Primary}" VerticalOptions="Center" />
+
+                    <Image Grid.Column="1" Source="notifications" HeightRequest="24" HorizontalOptions="Start" />
+
+                    <!-- Binding DateTime.Now to label to show current date. -->
+                    <Label Grid.Column="2" Text="{Binding Source={x:Static system:DateTime.Now}, StringFormat='{0:d MMM, yyyy}'}" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource Primary}" VerticalOptions="Center" HorizontalOptions="End" />
+                </Grid>
+
+                <!-- Overview items. -->
+                <VerticalStackLayout Grid.Row="2"
+                                     BindableLayout.ItemsSource="{Binding OverviewItems}"
+                                     Spacing="18">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Border StrokeThickness="0" StrokeShape="RoundRectangle 25"
+                                    HeightRequest="80">
+                                <Border.Shadow>
+                                    <Shadow Radius="60" Opacity="0.2" />
+                                </Border.Shadow>
+                                <Grid RowDefinitions="60" ColumnDefinitions="60,Auto,*,Auto"
+                                      ColumnSpacing="10" Padding="15,0,15,0" VerticalOptions="Center">
+                                    <Border StrokeThickness="0" StrokeShape="RoundRectangle 20"
+                                            BackgroundColor="{StaticResource SeconaryBackground}">
+                                        <Image Source="{Binding IconSource}" HeightRequest="36" />
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                        <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold" />
+                                        <Label Text="{Binding Details}" FontSize="12" />
+                                    </VerticalStackLayout>
+
+                                    <Label Grid.Column="3" Text="{Binding Amount, StringFormat='${0}'}" FontAttributes="Bold" VerticalOptions="Center" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </Grid>
+        </ScrollView>
+    </Grid>
 </ContentPage>

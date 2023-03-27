@@ -12,11 +12,15 @@
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"></ShellContent>
         </Tab>
 
+        <Tab Title="List" Icon="list.png">
+            <ShellContent ContentTemplate="{DataTemplate local:PropertyListView}" Route="ListPage"></ShellContent>
+        </Tab>
+
         <Tab Title="Add" Icon="add.png">
             <ShellContent ContentTemplate="{DataTemplate local:AddPropertyPage}" Route="AddPage"></ShellContent>
         </Tab>
         
-        <Tab Title="NFC" Icon="nfc.png">
+        <Tab Title="NFC" Icon="nfc.jpg">
             <ShellContent ContentTemplate="{DataTemplate local:NFCPage}" Route="NFCPage"></ShellContent>
         </Tab>
 
