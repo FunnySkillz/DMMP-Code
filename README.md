@@ -60,11 +60,11 @@
 
 #### Use-Case Diagram
 
-![DMMP Use-case Diagram](path/to/image.png)
+![DMMP Use-case Diagram]([path/to/image.png](http://www.plantuml.com/plantuml/png/RP91Qm8n48Nl-HM3bvxy2yMY28AjGhNNC2QZfdKJoSnMzjztDvME6teBttjli_CcCnRCqZONSw6ZW2J8uNGMy26Jav2YCUWaPTWpvVjndgBaSZIcPNB819CNx_-42I03Uc_T7QZj8z0DrYZ40jkShfIbW_tL3wJ4ldk3RN_1EDRRN6f2FC4hXYWKCJhIJAEmoZtOOHrOuD310kN_h3rqThXSl_7kCCBcy4bEu1Ra36_BUOboBzXK15DTkKiUkoU6tMQnqMia-QJ6LMJA0ijBIXamUbW9DR2AnvGR7AelmL1SDlJueMpcS8gmG_xYui82hFIWRcsxMEeVNFtHc66LC9q-ZrQaTBG1fNN7jL8tg8vnKVfwYgR5L88ENakZQIjDnvnHzFsx_W40)
 
 ### System Architecture - "How do I do it?"
 
-![DMMP System Architecture](path/to/image.png)
+![DMMP System Architecture]([path/to/image.png](http://www.plantuml.com/plantuml/png/NP11JiOW48NtSuf9NTS3_0iJZB-9CQsczW9Jm4geq03LgF7k0Yq6NP0CxtsycS597iZCYyJcNdxmnP9ka3pgum8LS6EvbYxR8fS0WW9Dv9DvLBjTv2z0h18UXYxxrht2Dy1ANDCSzPw2UfF8rhNv_-GwCj88L0Ol-_E8_28dJBlybxrrreGQxcXJ6Ny-dDIrh8QjiE-clIfPU4AsXHVhr2S5PGqKlOrCcZYUNFzkTyAqDJBEfVTGUaIcpXpEJoEonpk0_TEoNMQejHBx0m00)
 
 - The backend communicates with the database using an ORM, and the frontend communicates with the backend via a REST API.
 - Authorization is handled by Keycloak, and the entire system is containerized using Docker.
